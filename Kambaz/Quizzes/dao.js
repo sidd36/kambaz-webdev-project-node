@@ -11,3 +11,7 @@ export function deleteQuiz(id) {
 export function updateQuiz(id, updatedQuiz) {
     return model.updateOne({_id: id}, updatedQuiz);
 }
+
+export function addQuiz(quiz) {
+    return model.create(quiz);
+}

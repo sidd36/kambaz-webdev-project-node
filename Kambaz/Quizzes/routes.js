@@ -17,4 +17,10 @@ export default function QuizzesRoutes(app) {
         const result = await quizzesDao.updateQuiz(id, updatedQuiz);
         res.send(result);
     })
+
+    app.post("/api/quizzes", async(req, res) => {
+        const quiz = req.body;
+        const result = await quizzesDao.addQuiz(quiz);
+        res.send(result);
+    })
 }
