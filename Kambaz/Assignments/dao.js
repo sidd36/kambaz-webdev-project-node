@@ -1,4 +1,3 @@
-import assignments from "../Database/assignments.js";
 import model from "./model.js";
 
 export function getAssignments() {
