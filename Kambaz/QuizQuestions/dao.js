@@ -15,6 +15,7 @@ export async function createQuestion(question) {
 }
 
 export async function deleteQuestion(questionId) {
+    let question = await model.findOne({_id:questionId})
     await quizModel.updateOne({ _id: question.quizId }, { $inc: { qns: -1 } });
     return await model.deleteOne({_id: questionId});
 }
