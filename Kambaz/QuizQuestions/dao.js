@@ -1,5 +1,5 @@
 import model from "./model.js";
-
+import quizModel from "../Quizzes/model.js"
 export function getQuestions() {
     return model.find();
 }
@@ -8,8 +8,10 @@ export function findQuestionsForQuiz(inputQuizId) {
     return model.find({quizId: inputQuizId});
 }
 
-export function createQuestion(question) {
-    return model.create(question);
+export async function createQuestion(question) {
+    await quizModel.updateOne({ _id: question.quizId }, { $inc: { qns: 1 } });
+    return await model.create(question);
+
 }
 
 export function deleteQuestion(questionId) {
